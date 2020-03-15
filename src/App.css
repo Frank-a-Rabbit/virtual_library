@@ -26,6 +26,23 @@ body {
   margin: 0 auto;
 }
 
+#app .open-search,
+#app .close-search {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: gray;
+  font-size: 20px;
+  padding: 10px;
+}
+
+#app .open-search a,
+#app .close-search {
+  color: black;
+  font-family: 'Oswald', sans-serif;
+  text-decoration: none;
+}
+
 .root .title-cont {
   width: 100%;
   max-width: 400px;
@@ -93,7 +110,8 @@ body {
   background-color: red;
 }
 
-.books-list {
+.books-list,
+.ret-list {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -104,7 +122,7 @@ body {
   display: flex;
   width: 100%;
   max-width: 660px;
-  padding: 15px 10px 30px;
+  padding: 15px 10px 65px;
   background-color: whitesmoke;
   box-shadow: 2px 3px 2px black;
   border: 1px solid dimgray;
@@ -112,8 +130,12 @@ body {
   margin-bottom: 45px;
 }
 
-.book-item .img-cont img {
+.book-item .img-cont .img-bg {
   display: block;
+  width: 120px;
+  height: 180px;
+  background-position: center;
+  background-size: cover;
   border: 1px ridge silver;
   border-radius: 12px;
 }
@@ -123,7 +145,7 @@ body {
 }
 
 .book-item .book-title {
-  font-family: "Oswald" sans-serif;
+  font-family: "Oswald", sans-serif;
   color: darkslategray;
   font-size: 26px;
   line-height: 30px;
@@ -142,10 +164,41 @@ body {
   color: red;
 }
 
-.btn {
+.book-item .changer {
   position: absolute;
-  top: 15px;
+  bottom: 15px;
   right: 15px;
-  padding: 15px;
-  text-decoration: none;
+}
+
+.book-item .changer select {
+  height: 35px;
+  border: 0;
+  background: red;
+  color: white;
+  padding: 0 15px;
+  line-height: 35px;
+  font-family: "Oswald";
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.search-root {
+  padding-top: 15px;
+}
+
+.search-root h1 {
+  padding: 20px;
+  background: red;
+  box-shadow: 4px 4px 2px rgba(0,0,0,0.5);
+  font-family: "Oswald", sans-serif;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.search-field {
+  width: 100%;
+  max-width: 360px;
+  height: 60px;
+  padding-left: 20px;
 }

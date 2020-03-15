@@ -14,6 +14,7 @@ class BooksApp extends React.Component {
   }
 
   changeShelf = (selectedBook, shelfType) => {
+    console.log(selectedBook)
     BooksAPI.update(selectedBook, shelfType).then(response => {
       selectedBook.shelf = shelfType;
       this.setState(prevState => ({

@@ -12,51 +12,48 @@ class Search extends Component {
 
   state = {
     query: '',
-    newBooks: [],
-    searchErr: false
+    searchResults: [],
+    noResults: false
   };
 
   getBooks = event => {
     const query = event.target.value;
     this.setState({ query });
 
-    // if user input => run the search
     if (query) {
       BooksAPI.search(query.trim(), 20).then(books => {
         books.length > 0
-          ? this.setState({ newBooks: books, searchErr: false })
-          : this.setState({ newBooks: [], searchErr: true });
+          ? this.setState({ searchResults: books, noResults: false })
+          : this.setState({ searchResults: [], noResults: true });
       });
-
-      // if query is empty => reset state to default
-    } else this.setState({ newBooks: [], searchErr: false });
+    } else this.setState({ searchResults: [], noResults: false });
   };
 
   render() {
-    const { query, newBooks, searchErr } = this.state;
+    const { query, searchResults, noResults } = this.state;
     const { books, changeShelf } = this.props;
 
     return (
-      <div className="search-books">
-        <div className="search-books-bar">
+      <div className="search-root">
+        <h1>Search for Books</h1>
+        <div className="search-input">
           <Link className="close-search" to="/">
-            Close
+            Home
           </Link>
-          <div className="search-books-input-wrapper">
-            <input
+          <input
+              className="search-field"
               type="text"
               placeholder="Search by title or author"
               value={query}
               onChange={this.getBooks}
             />
-          </div>
         </div>
         <div className="search-books-results">
-          {newBooks.length > 0 && (
+          {searchResults.length > 0 && (
             <div>
-              <h3>Search returned {newBooks.length} books </h3>
-              <ol className="books-grid">
-                {newBooks.map(book => (
+              <h3>Search returned {searchResults.length} books </h3>
+              <ol className="ret-list">
+                {searchResults.map(book => (
                   <Book
                     book={book}
                     books={books}
@@ -67,8 +64,10 @@ class Search extends Component {
               </ol>
             </div>
           )}
-          {searchErr && (
-            <h3>Search did not return any books. Please try again!</h3>
+          {noResults && (
+            <div className="no-results">
+              <h3>No Search Results</h3>
+            </div>
           )}
         </div>
       </div>
