@@ -15,9 +15,9 @@ Alternatively the following repo can be cloned and launched from the command lin
 The project is structured as such
 
 App 
- SearchModule - For searching the BooksApi
-  BookCase - Component for holding book shelves
-   BookShelf - Component for listing books by shelfType
-    Book - Component for displaying book item
+SearchModule - For searching the BooksApi
+BookCase - Component for holding book shelves
+BookShelf - Component for listing books by shelfType
+Book - Component for displaying book item
 
 
