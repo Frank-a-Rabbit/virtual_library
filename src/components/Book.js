@@ -12,26 +12,31 @@ class Book extends Component {
     const { book, books, changeShelf } = this.props
 
     let bookTitle = book.title.length > 0 && book.title !== undefined ? book.title : "Title Undefined"
-    console.log(typeof book)
-    const coverImg = book.imageLinks && book.imageLinks.thumbnail
+    const bgImg = book.imageLinks && book.imageLinks.thumbnail
       ? book.imageLinks.thumbnail
-      : "https://scx1.b-cdn.net/csz/news/800/2018/universe.jpg"
+      : null
 
     const update = (event) => {
-      this.props.changeShelf(this.props.book, event.target.value)
+      changeShelf(book, event.target.value)
     }
 
     let current = "none"
 
     for(let b of books){
-      b.id === book.id ? current = b.shelf : current = current
+      if(b.id === book.id){
+        current = b.shelf
+      }
     }
     return (
       <li>
         <div className="book-item">
           <div className="img-cont">
-            <div className="img-bg" style={{ backgroundImage: `url(${coverImg})` }}></div>
-            {/* <ChangeShelf book={book} books={books} changeShelf={changeShelf}></ChangeShelf> */}
+            <div className="img-bg" style={{ backgroundImage: `url(${bgImg})` }}>
+              {
+                bgImg === null && 
+                  <span>No Image Available</span>
+              }
+            </div>
           </div>
           <div className="contents">
             <div className="book-title">{bookTitle}</div>
@@ -67,34 +72,5 @@ class Book extends Component {
     )
   }
 }
-
-// const Book = props => {
-//   const { book, books, changeShelf } = props
-
-//   return (
-//     <li>
-//       <div className="book">
-//         <div className="book-top">
-//           <img src={book.imageLinks.thumbnail}></img>
-//           <ChangeShelf book={book} books={books} changeShelf={changeShelf} />
-//         </div>
-//         <div className="book-title">{book.title}</div>
-//         {/* Check for authors and render each on separate line if exist*/
-//         book.authors &&
-//           book.authors.map((author, index) => (
-//             <div className="book-authors" key={index}>
-//               {author}
-//             </div>
-//           ))}
-//       </div>
-//     </li>
-//   )
-// }
-
-// Book.propTypes = {
-//   book: PropTypes.object.isRequired,
-//   books: PropTypes.array.isRequired,
-//   changeShelf: PropTypes.func.isRequired
-// }
 
 export default Book

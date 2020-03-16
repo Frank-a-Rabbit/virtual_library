@@ -134,10 +134,19 @@ body {
   display: block;
   width: 120px;
   height: 180px;
+  background: black;
   background-position: center;
   background-size: cover;
   border: 1px ridge silver;
   border-radius: 12px;
+}
+
+.book-item .img-cont .img-bg span {
+  display: block;
+  position: relative;
+  z-index: 1;
+  padding: 5px;
+  color: white;
 }
 
 .book-item .contents {

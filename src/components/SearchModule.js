@@ -1,37 +1,37 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import Book from './Book';
-import * as BooksAPI from '../BooksAPI';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import Book from './Book'
+import * as BooksAPI from '../BooksAPI'
 
 class Search extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
     changeShelf: PropTypes.func.isRequired
-  };
+  }
 
   state = {
     query: '',
     searchResults: [],
     noResults: false
-  };
+  }
 
   getBooks = event => {
-    const query = event.target.value;
-    this.setState({ query });
+    const query = event.target.value
+    this.setState({ query })
 
     if (query) {
-      BooksAPI.search(query.trim(), 20).then(books => {
+      BooksAPI.search(query.trim(), 30).then(books => {
         books.length > 0
           ? this.setState({ searchResults: books, noResults: false })
-          : this.setState({ searchResults: [], noResults: true });
-      });
-    } else this.setState({ searchResults: [], noResults: false });
-  };
+          : this.setState({ searchResults: [], noResults: true })
+      })
+    } else this.setState({ searchResults: [], noResults: false })
+  }
 
   render() {
-    const { query, searchResults, noResults } = this.state;
-    const { books, changeShelf } = this.props;
+    const { query, searchResults, noResults } = this.state
+    const { books, changeShelf } = this.props
 
     return (
       <div className="search-root">
@@ -71,7 +71,7 @@ class Search extends Component {
           )}
         </div>
       </div>
-    );
+    )
   }
 }
-export default Search;
+export default Search

@@ -1,29 +1,28 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import * as BooksAPI from './BooksAPI';
-import BookCase from './components/BookCase';
-import { Link } from 'react-router-dom';
-import SearchModule from './components/SearchModule';
+import React from 'react'
+import { Route } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
+import BookCase from './components/BookCase'
+import { Link } from 'react-router-dom'
+import SearchModule from './components/SearchModule'
 import "./App.css"
 
 class BooksApp extends React.Component {
-  state = { books: [] };
+  state = { books: [] }
 
   componentDidMount() {
-    BooksAPI.getAll().then(books => this.setState({ books }));
+    BooksAPI.getAll().then(books => this.setState({ books }))
   }
 
   changeShelf = (selectedBook, shelfType) => {
-    console.log(selectedBook)
     BooksAPI.update(selectedBook, shelfType).then(response => {
-      selectedBook.shelf = shelfType;
+      selectedBook.shelf = shelfType
       this.setState(prevState => ({
         books: prevState.books
           .filter(book => book.id !== selectedBook.id)
           .concat(selectedBook)
-      }));
-    });
-  };
+      }))
+    })
+  }
 
   render() {
     const { books } = this.state
@@ -59,4 +58,4 @@ class BooksApp extends React.Component {
   }
 }
 
-export default BooksApp;
+export default BooksApp

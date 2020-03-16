@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import BookShelf from "./BookShelf";
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import BookShelf from "./BookShelf"
 
 class BookCase extends Component {
   static propTypes = {
@@ -9,17 +9,17 @@ class BookCase extends Component {
   }
 
   render() {
-    const { books, changeShelf } = this.props;
+    const { books, changeShelf } = this.props
     const shelfTypes = [
       { type: "currentlyReading", title: "Currently Reading" },
       { type: "wantToRead", title: "To Be Read" },
       { type: "read", title: "Read" }
-    ];
+    ]
 
     return (
       <div className="bookcase">
         {shelfTypes.map((shelf, index) => {
-          const shelves = books.filter(book => book.shelf === shelf.type);
+          const shelves = books.filter(book => book.shelf === shelf.type)
           return (
             <div className="book-shelf" key={index}>
               <h2 className="shelf-title">{shelf.title}</h2>
@@ -27,11 +27,11 @@ class BookCase extends Component {
                 <BookShelf books={shelves} changeShelf={changeShelf}></BookShelf>
               </div>
             </div>
-          );
+          )
         })}
       </div>
-    );
+    )
   }
 }
 
-export default BookCase;
+export default BookCase
