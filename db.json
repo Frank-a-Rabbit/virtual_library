@@ -1,10 +1,7 @@
-{
 
 events : {
 
   event1: "test1",
   event2: "test2"
-
-}
 
 }
