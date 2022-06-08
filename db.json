@@ -1,6 +1,1 @@
-{"events" : {
-
-    "event1": "test1",
-    "event2": "test2"
-  
-  }}
+{"events" : { "name" : "Test 1" }, { "name" : "Test 2" }}
